@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coast Life Communities | Gulf Coast Rentals</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #F97316;
+            --orange-hover: #ea580c;
+            --navy-dark: #0F172A;
+            --text-dark: #1E293B;
+            --text-gray: #64748B;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            --map-bg: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--navy-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i { color: var(--primary-orange); font-size: 1.5rem; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-link { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: var(--primary-orange); }
+
+        .btn-signin {
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+            background: transparent;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-signin:hover { background: var(--primary-orange); color: white; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            /* Lifestyle Image: Gulf Coast Vibe */
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero h1 span { color: var(--primary-orange); }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 750px;
+            margin-bottom: 40px;
+            color: #f1f5f9;
+            font-weight: 400;
+        }
+
+        /* --- ENHANCED SEARCH BAR --- */
+        .search-wrapper {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 16px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            width: 100%;
+            max-width: 900px;
+            flex-wrap: wrap;
+        }
+
+        .search-group {
+            flex: 1;
+            min-width: 180px;
+            border-right: 1px solid #e2e8f0;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .search-group:last-of-type { border-right: none; }
+
+        .search-label { font-size: 0.75rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+        
+        .search-input {
+            width: 100%; border: none; background: transparent;
+            font-size: 1rem; color: var(--text-dark); font-weight: 500; outline: none;
+        }
+
+        .btn-search-hero {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-search-hero:hover { background: var(--orange-hover); transform: translateY(-2px); }
+
+        /* --- STATS STRIP --- */
+        .stats-strip {
+            background: white;
+            padding: 30px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            border-bottom: 1px solid var(--border);
+        }
+        .stat-item { display: flex; align-items: center; gap: 12px; }
+        .stat-icon { font-size: 1.8rem; color: var(--primary-orange); background: #fff7ed; padding: 10px; border-radius: 50%; }
+        .stat-text h4 { font-size: 1.2rem; font-weight: 700; margin: 0; line-height: 1; }
+        .stat-text span { font-size: 0.85rem; color: var(--text-gray); }
+
+        /* --- FEATURED PROPERTIES --- */
+        .section { padding: 80px 5%; background: var(--bg-light); }
+        .section-header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 40px; }
+        .section-title h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; margin-bottom: 10px; color: var(--navy-dark); }
+        .section-title p { color: var(--text-gray); }
+        .link-arrow { color: var(--primary-orange); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        .link-arrow:hover { text-decoration: underline; }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
+        }
+        .property-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        
+        .card-img { height: 200px; background-size: cover; background-position: center; position: relative; }
+        .price-tag { position: absolute; bottom: 10px; left: 10px; background: white; padding: 5px 12px; border-radius: 6px; font-weight: 700; color: var(--navy-dark); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        .card-details { padding: 20px; }
+        .card-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+        .card-location { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+        .card-meta { display: flex; gap: 15px; border-top: 1px solid var(--border); padding-top: 15px; font-size: 0.85rem; color: var(--text-dark); }
+
+        /* --- NEW: INTERACTIVE MAP SECTION --- */
+        .map-section {
+            padding: 0;
+            height: 700px;
+            display: flex;
+            position: relative;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Map Sidebar (Filters) */
+        .map-sidebar {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+            z-index: 10;
+        }
+
+        .map-header h3 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; margin-bottom: 5px; }
+        .map-header p { font-size: 0.9rem; color: var(--text-gray); }
+
+        .map-filter-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+        .map-filter-group select, .map-filter-group input { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; }
+        
+        .btn-update-map {
+            width: 100%; background: var(--navy-dark); color: white; border: none;
+            padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px;
+        }
+        .btn-update-map:hover { opacity: 0.9; }
+
+        /* Simulated Map Container */
+        .map-container {
+            flex: 1;
+            background-color: #E5E7EB;
+            /* Placeholder Map Background Pattern */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/Gulfport_Mississippi_map.png'); /* Just for visual context */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Simulated Map Controls */
+        .map-overlay-controls {
+            position: absolute; top: 20px; right: 20px;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .control-btn {
+            width: 40px; height: 40px; background: white; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; color: var(--text-dark);
+        }
+
+        /* Interactive Map Pins */
+        .map-pin {
+            position: absolute;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: 0.2s;
+            border: 2px solid transparent;
+        }
+        .map-pin:hover {
+            background: var(--primary-orange);
+            color: white;
+            transform: scale(1.1);
+            z-index: 100;
+        }
+        /* Positioning pins randomly for demo */
+        .pin-1 { top: 40%; left: 30%; }
+        .pin-2 { top: 55%; left: 60%; background: var(--navy-dark); color: white; } /* Highlighted pin */
+        .pin-3 { top: 30%; left: 50%; }
+
+        /* Map Info Window (Simulated Hover) */
+        .info-window {
+            position: absolute;
+            top: 40%; /* Position near pin-2 */
+            left: 62%;
+            background: white;
+            width: 240px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 10px;
+            z-index: 50;
+            animation: fadeIn 0.3s ease;
+        }
+        .iw-img { width: 100%; height: 120px; background: #ddd; border-radius: 6px; margin-bottom: 8px; background-size: cover; background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80'); }
+        .iw-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+        .iw-price { color: var(--primary-orange); font-weight: 600; font-size: 0.9rem; }
+        .iw-link { display: block; margin-top: 8px; color: var(--navy-dark); font-size: 0.8rem; text-decoration: underline; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- MOBILE TOGGLE FOR MAP --- */
+        .mobile-map-toggle { display: none; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--navy-dark); color: white; padding: 60px 5% 20px; }
+        .copyright { text-align: center; border-top: 1px solid #334155; padding-top: 20px; color: #64748B; font-size: 0.85rem; margin-top: 40px; }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.5rem; }
+            .search-wrapper { flex-direction: column; gap: 0; padding: 10px; }
+            .search-group { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; padding: 15px; }
+            .search-group:last-of-type { border-bottom: none; }
+            .btn-search-hero { width: 100%; justify-content: center; }
+            
+            /* Map Mobile */
+            .map-section { flex-direction: column; height: auto; }
+            .map-sidebar { width: 100%; order: 2; border-right: none; border-top: 1px solid var(--border); }
+            .map-container { height: 400px; order: 1; }
+            .stats-strip { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-umbrella-beach"></i>
+            Coast Life Communities
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Rentals</a>
+            <a href="#" class="nav-link">Map View</a>
+            <a href="#" class="nav-link">Contact</a>
+        </nav>
+        <a href="#" class="btn-signin">Sign In</a>
+    </header>
+
+    <section class="hero">
+        <div style="background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.4); display: inline-flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-check-circle" style="color: #4ade80;"></i> Verified Gulf Coast Listings
+        </div>
+        
+        <h1>Live the Coast Life.<br>Find Your <span>Perfect Home.</span></h1>
+        <p>Explore thousands of rentals in Mississippi. From beachfront condos to family homes, your next chapter starts here.</p>
+
+        <div class="search-wrapper">
+            <div class="search-group">
+                <label class="search-label">Location</label>
+                <input class="search-input" type="text" placeholder="City, Zip, or Neighborhood">
+            </div>
+            <div class="search-group">
+                <label class="search-label">Move-in Date</label>
+                <input class="search-input" type="date">
+            </div>
+            <div class="search-group">
+                <label class="search-label">Price Range</label>
+                <select class="search-input">
+                    <option>$500 - $1,000</option>
+                    <option>$1,000 - $2,000</option>
+                    <option>$2,000+</option>
+                </select>
+            </div>
+            <button class="btn-search-hero">
+                <i class="fa-solid fa-search"></i> Search
+            </button>
+        </div>
+    </section>
+
+    <div class="stats-strip">
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-house-chimney"></i></div>
+            <div class="stat-text"><h4>2,500+</h4><span>Active Rentals</span></div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-text"><h4>15k+</h4><span>Happy Renters</span></div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+            <div class="stat-text"><h4>4.9/5</h4><span>Tenant Rating</span></div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Trending This Week</h2>
+                <p>Popular rentals in Biloxi, Gulfport, and Ocean Springs.</p>
+            </div>
+            <a href="#" class="link-arrow">View All Listings <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="property-grid">
+            <div class="property-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-2a4d04b2b278?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <span class="price-tag">$1,850/mo</span>
+                </div>
+                <div class="card-details">
+                    <h3 class="card-name">Ocean View Bungalow</h3>
+                    <div class="card-location"><i class="fa-solid fa-map-pin"></i> Biloxi, MS</div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-bed"></i> 3 Beds</span>
+                        <span><i class="fa-solid fa-bath"></i> 2 Baths</span>
+                        <span><i class="fa-solid fa-ruler-combined"></i> 1,800 sqft</span>
+                    </div>
+                </div>
+            </div>
+            <div class="property-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <span class="price-tag">$2,200/mo</span>
+                </div>
+                <div class="card-details">
+                    <h3 class="card-name">Modern Gulfport Condo</h3>
+                    <div class="card-location"><i class="fa-solid fa-map-pin"></i> Gulfport, MS</div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-bed"></i> 2 Beds</span>
+                        <span><i class="fa-solid fa-bath"></i> 2 Baths</span>
+                        <span><i class="fa-solid fa-ruler-combined"></i> 1,200 sqft</span>
+                    </div>
+                </div>
+            </div>
+            <div class="property-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <span class="price-tag">$3,100/mo</span>
+                </div>
+                <div class="card-details">
+                    <h3 class="card-name">Family Home with Pool</h3>
+                    <div class="card-location"><i class="fa-solid fa-map-pin"></i> Ocean Springs, MS</div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-bed"></i> 4 Beds</span>
+                        <span><i class="fa-solid fa-bath"></i> 3 Baths</span>
+                        <span><i class="fa-solid fa-ruler-combined"></i> 2,500 sqft</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="map-sidebar">
+            <div class="map-header">
+                <h3>Explore by Map</h3>
+                <p>Find rentals near schools, beaches, or work.</p>
+            </div>
+            
+            <div class="map-filter-group">
+                <label>Price Range</label>
+                <select>
+                    <option>Any Price</option>
+                    <option>$1,000 - $2,000</option>
+                    <option>$2,000+</option>
+                </select>
+            </div>
+            <div class="map-filter-group">
+                <label>Bedrooms</label>
+                <select>
+                    <option>Any</option>
+                    <option>2+ Beds</option>
+                    <option>3+ Beds</option>
+                </select>
+            </div>
+            <div class="map-filter-group">
+                <label>Home Type</label>
+                <select>
+                    <option>All Types</option>
+                    <option>House</option>
+                    <option>Apartment</option>
+                </select>
+            </div>
+            
+            <button class="btn-update-map">Update Map Results</button>
+            <a href="#" style="text-align: center; display: block; font-size: 0.9rem; color: var(--primary-orange); margin-top: 10px;">Switch to Full List View</a>
+        </div>
+
+        <div class="map-container">
+            <div class="map-overlay-controls">
+                <div class="control-btn"><i class="fa-solid fa-plus"></i></div>
+                <div class="control-btn"><i class="fa-solid fa-minus"></i></div>
+                <div class="control-btn"><i class="fa-solid fa-location-crosshairs"></i></div>
+            </div>
+
+            <div class="map-pin pin-1">$1,850</div>
+            <div class="map-pin pin-2">$2,200</div>
+            <div class="map-pin pin-3">$3,100</div>
+
+            <div class="info-window">
+                <div class="iw-img"></div>
+                <div class="iw-title">Modern Gulfport Condo</div>
+                <div class="iw-price">$2,200/mo</div>
+                <div style="font-size: 0.8rem; color: #666;">2 Bd • 2 Ba • 1,200 sqft</div>
+                <a href="#" class="iw-link">View Details <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="text-align: center;">
+            <div class="logo" style="justify-content: center; color: white; margin-bottom: 20px;">
+                <i class="fa-solid fa-umbrella-beach" style="color: var(--primary-orange);"></i>
+                Coast Life Communities
+            </div>
+            <p style="color: #94A3B8;">Connecting you with the best rental homes on the Mississippi Gulf Coast.</p>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Coast Life Communities. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
